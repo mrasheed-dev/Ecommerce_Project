@@ -5,15 +5,19 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
+import com.example.demo.repository.AdminRepository;
 import com.example.demo.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final AdminRepository adminRepository;
+
     private final UserRepository repository;
 
-    public UserServiceImpl(UserRepository repository) {
+    public UserServiceImpl(UserRepository repository, AdminRepository adminRepository) {
         this.repository = repository;
+        this.adminRepository = adminRepository;
     }
 
     @Override
@@ -25,9 +29,14 @@ public class UserServiceImpl implements UserService {
 
         return repository.save(user);
     }
-
+    
     @Override
     public String login(String email, String password) {
+
+        // If email exists in Admin table
+        if (adminRepository.existsByEmail(email)) {
+            return "This email belongs to Admin";
+        }
 
         Optional<User> optionalUser = repository.findByEmail(email);
 
@@ -41,6 +50,6 @@ public class UserServiceImpl implements UserService {
             return "Invalid password";
         }
 
-        return "Login successful";
+        return "User login successful";
     }
 }
