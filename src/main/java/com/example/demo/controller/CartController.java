@@ -28,7 +28,7 @@ public class CartController {
         return service.addToCart(cart);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/{userId}") //localhost/api/cart/1
     public List<Cart> getCart(@PathVariable Long userId) {
         return service.getUserCart(userId);
     }

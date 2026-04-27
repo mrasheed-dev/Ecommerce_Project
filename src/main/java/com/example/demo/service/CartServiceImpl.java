@@ -16,22 +16,18 @@ public class CartServiceImpl implements CartService {
         this.repository = repository;
     }
 
-    @Override
     public Cart addToCart(Cart cart) {
         return repository.save(cart);
     }
 
-    @Override
     public List<Cart> getUserCart(Long userId) {
         return repository.findByUserId(userId);
     }
 
-    @Override
     public void removeItem(Long cartId) {
         repository.deleteById(cartId);
     }
 
-    @Override
     public void clearCart(Long userId) {
         repository.deleteByUserId(userId);
     }
