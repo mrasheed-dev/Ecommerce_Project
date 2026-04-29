@@ -10,10 +10,9 @@ import com.example.demo.service.ReviewService;
 
 
 @RestController
-@RequestMapping("/api/reviews")
-@CrossOrigin("*")
-public class ReviewController {
-
+@RequestMapping("/api/reviews") //localhost/api/reviews
+public class ReviewController 
+{
     private final ReviewService service;
 
     public ReviewController(ReviewService service) {
@@ -25,18 +24,18 @@ public class ReviewController {
         return service.add(review);
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/{productId}")//localhost/api/reviews/1
     public List<Review> get(@PathVariable Long productId) {
         return service.getByProduct(productId);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")//localhost/api/reviews/1
     public String delete(@PathVariable Long id) {
         service.delete(id);
         return "Review deleted successfully";
     }
 
-    @GetMapping("/average/{productId}")
+    @GetMapping("/average/{productId}")//localhost/api/reviews/average/1
     public Double average(@PathVariable Long productId) {
         return service.average(productId);
     }

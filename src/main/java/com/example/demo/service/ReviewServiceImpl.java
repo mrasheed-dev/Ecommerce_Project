@@ -18,22 +18,26 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review add(Review review) {
+    public Review add(Review review) 
+    {
         return repository.save(review);
     }
 
     @Override
-    public List<Review> getByProduct(Long productId) {
+    public List<Review> getByProduct(Long productId) 
+    {
         return repository.findByProductId(productId);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) 
+    {
         repository.deleteById(id);
     }
 
     @Override
-    public Double average(Long productId) {
+    public Double average(Long productId) 
+    {
         return repository.getAverageRating(productId);
     }
 }
