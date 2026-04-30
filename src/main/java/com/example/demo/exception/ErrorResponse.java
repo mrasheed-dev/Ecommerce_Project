@@ -3,17 +3,15 @@ package com.example.demo.exception;
 
 public class ErrorResponse {
 
-    private String message;
-    private int status;
-    private String time;
+    private String message;//something went wrong
+    private int status; //500
 
     public ErrorResponse() {
     }
 
-    public ErrorResponse(String message, int status, String time) {
+    public ErrorResponse(String message, int status) {
         this.message = message;
         this.status = status;
-        this.time = time;
     }
 
     public String getMessage() {
@@ -32,11 +30,5 @@ public class ErrorResponse {
         this.status = status;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

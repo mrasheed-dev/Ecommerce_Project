@@ -1,24 +1,21 @@
 package com.example.demo.exception;
 
 
-import java.time.LocalDateTime;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@RestControllerAdvice // it is used to handle exception
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(RuntimeException.class) // it is used to call exception classes
     public ResponseEntity<ErrorResponse> handleRuntimeException(
             RuntimeException ex) {
 
         ErrorResponse error = new ErrorResponse(
                 ex.getMessage(),
-                HttpStatus.BAD_REQUEST.value(),
-                LocalDateTime.now().toString()
+                HttpStatus.BAD_REQUEST.value()
         );
 
         return new ResponseEntity<>(
@@ -33,8 +30,7 @@ public class GlobalExceptionHandler {
 
         ErrorResponse error = new ErrorResponse(
                 "Something went wrong",
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                LocalDateTime.now().toString()
+                HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
 
         return new ResponseEntity<>(
