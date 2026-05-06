@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,7 +20,7 @@ public class Review {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JsonIgnoreProperties({"reviews"})
     private Product product;
 
     public Review() 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.OrderEntity;
+import com.example.demo.entity.Order;
 import com.example.demo.entity.Product;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderEntity placeOrder(OrderEntity order) {
+    public Order placeOrder(Order order) {
 
         Product product = productRepository
                 .findById(order.getProduct().getId())
@@ -42,21 +42,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderEntity> getAllOrders() {
+    public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
     @Override
-    public List<OrderEntity> getOrdersByUser(Long userId) {
+    public List<Order> getOrdersByUser(Long userId) {
         return orderRepository.findByUserId(userId);
     }
 
     @Override
-    public OrderEntity updateStatus(
+    public Order updateStatus(
             Long id,
             String status) {
 
-        OrderEntity order = orderRepository
+        Order order = orderRepository
                 .findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Order not found"));

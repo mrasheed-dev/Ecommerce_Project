@@ -2,16 +2,15 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.entity.OrderEntity;
-
+import com.example.demo.entity.Order;
 
 public interface OrderService {
 
-    OrderEntity placeOrder(OrderEntity order);
+    Order placeOrder(Order order);
 
-    List<OrderEntity> getAllOrders();
+    List<Order> getAllOrders();
 
-    List<OrderEntity> getOrdersByUser(Long userId);
+    List<Order> getOrdersByUser(Long userId);
 
-    OrderEntity updateStatus(Long id, String status);
+    Order updateStatus(Long id, String status);
 }
