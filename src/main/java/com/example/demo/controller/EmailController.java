@@ -7,7 +7,6 @@ import com.example.demo.service.EmailService;
 
 @RestController
 @RequestMapping("/api/email")
-@CrossOrigin("*")
 public class EmailController {
 
     private final EmailService service;
